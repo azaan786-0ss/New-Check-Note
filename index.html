@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#0d0414">
+  <meta name="description" content="A romantic interactive love note made with love for Alma.">
+  <title>For Alma ❤️ | A Love Note</title>
+
+  <!-- Google Fonts: Elegant pairing for luxury romance & readability -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Particle Canvas for Floating Hearts & Starlight -->
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress-bar" aria-hidden="true"></div>
+
+  <!-- Floating Audio / Music Player -->
+  <aside id="audio-control-panel">
+    <button id="music-toggle-btn" class="glass-pill-btn" aria-label="Toggle romantic background music" title="Play our song">
+      <span class="music-icon" id="music-icon">🎵</span>
+      <span class="music-wave" id="music-wave" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </span>
+      <span class="music-label" id="music-label">Our Song</span>
+    </button>
+    <audio id="bg-audio" preload="auto" loop>
+      <source src="audio/our-song.mp3" type="audio/mpeg">
+    </audio>
+  </aside>
+
+  <!-- Music Toast Notification (Graceful fallback) -->
+  <div id="toast-notification" class="toast hidden" role="status" aria-live="polite"></div>
+
+  <!-- ========================================================= -->
+  <!-- 1. OPENING / LANDING SCREEN (Full-viewport gatekeeper)     -->
+  <!-- ========================================================= -->
+  <section id="landing-screen" class="landing-screen" aria-label="Welcome screen">
+    <div class="landing-content glass-card">
+      <div class="landing-heart-halo">
+        <span class="pulse-heart" aria-hidden="true">❤️</span>
+      </div>
+
+      <div class="landing-lines">
+        <h1 id="landing-line-1" class="landing-line">Hey you... <span class="heart-inline">❤️</span></h1>
+        <p id="landing-line-2" class="landing-line">I made something for you.</p>
+        <p id="landing-line-3" class="landing-line subtitle">Don't just scroll... take your time.</p>
+      </div>
+
+      <div class="landing-action">
+        <button id="open-experience-btn" class="romantic-glow-btn" aria-label="Open the love note experience">
+          <span class="btn-text">Open it ❤️</span>
+          <span class="btn-glow-ring"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- MAIN EXPERIENCE (Appears after tapping "Open it ❤️")       -->
+  <!-- ========================================================= -->
+  <main id="main-experience" class="main-container hidden-initial">
+
+    <!-- 2. PERSONALIZED GREETING -->
+    <header id="greeting-section" class="section greeting-section">
+      <h2 class="recipient-title">
+        For Meyray <span class="highlight-name name-recipient">Alma</span> <span class="heart-pulse">❤️</span>
+      </h2>
+      <div class="heart-divider">
+        <span class="divider-line"></span>
+        <span class="divider-gem">✨</span>
+        <span class="divider-heart">💖</span>
+        <span class="divider-gem">✨</span>
+        <span class="divider-line"></span>
+      </div>
+      <p class="sender-tagline">
+        From <span class="highlight-name name-sender">Alma ka Azaan</span>
+      </p>
+    </header>
+
+    <!-- 3. PHOTO MEMORIES SECTION -->
+    <section id="memories-section" class="section memories-section" aria-labelledby="memories-heading">
+      <div class="section-header">
+        <span class="section-pill">Our Moments</span>
+        <h2 id="memories-heading" class="section-title">Memories Frozen in Time ✨</h2>
+        <p class="section-subtitle">A few snapshots of moments that mean everything to me</p>
+      </div>
+
+      <div class="photo-cards-container" id="photo-gallery">
+        <!-- Memory Card 1 -->
+        <article class="polaroid-card tilt-left" data-index="0" tabindex="0" role="button" aria-label="Open photo: One of my favorite moments">
+          <div class="polaroid-pin" aria-hidden="true"></div>
+          <div class="polaroid-image-wrap">
+            <img src="images/photo1.jpg" alt="Our first spark and memory" loading="lazy" class="polaroid-img">
+            <div class="polaroid-hover-badge">Tap to expand 🔍</div>
+          </div>
+          <figcaption class="polaroid-caption">
+            <span class="caption-text">One of my favorite moments ❤️</span>
+          </figcaption>
+        </article>
+
+        <!-- Memory Card 2 -->
+        <article class="polaroid-card tilt-right" data-index="1" tabindex="0" role="button" aria-label="Open photo: Still one of my favorite pictures of you">
+          <div class="polaroid-tape" aria-hidden="true"></div>
+          <div class="polaroid-image-wrap">
+            <img src="images/photo2.jpg" alt="Unforgettable laughter that felt like home" loading="lazy" class="polaroid-img">
+            <div class="polaroid-hover-badge">Tap to expand 🔍</div>
+          </div>
+          <figcaption class="polaroid-caption">
+            <span class="caption-text">Still one of my favorite pictures of you.</span>
+          </figcaption>
+        </article>
+
+        <!-- Memory Card 3 -->
+        <article class="polaroid-card tilt-center" data-index="2" tabindex="0" role="button" aria-label="Open photo: My Princess Almaa">
+          <div class="polaroid-pin" aria-hidden="true"></div>
+          <div class="polaroid-image-wrap">
+            <img src="images/photo3.jpg" alt="My Princess Almaa" loading="lazy" class="polaroid-img">
+            <div class="polaroid-hover-badge">Tap to expand 🔍</div>
+          </div>
+          <figcaption class="polaroid-caption">
+            <span class="caption-text">My Princess Almaa</span>
+          </figcaption>
+        </article>
+
+        <!-- Memory Card 4 -->
+        <article class="polaroid-card tilt-left-subtle" data-index="3" tabindex="0" role="button" aria-label="Open photo: The day I realized how lucky I am">
+          <div class="polaroid-tape" aria-hidden="true"></div>
+          <div class="polaroid-image-wrap">
+            <img src="images/photo4.jpg" alt="Starlit nights and quiet conversations" loading="lazy" class="polaroid-img">
+            <div class="polaroid-hover-badge">Tap to expand 🔍</div>
+          </div>
+          <figcaption class="polaroid-caption">
+            <span class="caption-text">The day I realized how lucky I am. 🌙</span>
+          </figcaption>
+        </article>
+
+        <!-- Memory Card 5 -->
+        <article class="polaroid-card tilt-right-subtle" data-index="4" tabindex="0" role="button" aria-label="Open photo: Those beautiful eyes hold my entire world">
+          <div class="polaroid-pin" aria-hidden="true"></div>
+          <div class="polaroid-image-wrap">
+            <img src="images/photo5.jpg" alt="Those beautiful eyes hold my entire world" loading="lazy" class="polaroid-img">
+            <div class="polaroid-hover-badge">Tap to expand 🔍</div>
+          </div>
+          <figcaption class="polaroid-caption">
+            <span class="caption-text">Those beautiful eyes hold my entire world... Can't wait to make a million more memories with you. ♾️ ✨</span>
+          </figcaption>
+        </article>
+      </div>
+
+      <p class="photo-hint">💡 Tap any memory card to view full screen</p>
+    </section>
+
+    <!-- 4. MAIN LOVE MESSAGE SECTION -->
+    <section id="letter-section" class="section letter-section" aria-labelledby="letter-heading">
+      <div class="section-header">
+        <span class="section-pill">Straight From The Heart</span>
+        <h2 id="letter-heading" class="section-title">A little something I wanted to tell you...</h2>
+      </div>
+
+      <div class="letter-stationery glass-card">
+        <div class="letter-top-seal">
+          <span class="wax-seal-icon">💌</span>
+        </div>
+
+        <div id="letter-content" class="letter-text-flow" aria-live="polite">
+          <!-- Text lines will be revealed smoothly by typewriter in script.js -->
+        </div>
+
+        <div class="letter-actions">
+          <button id="skip-letter-btn" class="subtle-link-btn" title="Show all text immediately">
+            <span>Show all text ✨</span>
+          </button>
+        </div>
+
+        <div class="letter-signature">
+          <p class="signature-date" id="letter-signature-date">Forever & Always,</p>
+          <p class="handwritten-signature">Alma ka Azaan ❤️</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIRTHDAY WISHES SECTION (TIME-LOCKED FOR SEPT 16TH) -->
+    <section id="birthday-section" class="section birthday-section" aria-labelledby="birthday-heading">
+      
+      <!-- Locked View (Shown before Sept 16th) -->
+      <div id="birthday-locked-view" class="birthday-card glass-card birthday-locked-card">
+        <div class="lock-glow-container">
+          <span class="lock-icon-animated">🔒</span>
+          <span class="lock-sparkle-decor">✨</span>
+        </div>
+        
+        <h2 class="birthday-title">A Special Birthday Surprise... 🎂✨</h2>
+        <div class="birthday-date-badge">Unlocks September 16th 🎈</div>
+
+        <p class="birthday-message">
+          Shhh... something extra special is hidden right here for Alma's Birthday!
+        </p>
+
+        <!-- Live Birthday Countdown Grid -->
+        <div class="bday-countdown-box">
+          <p class="bday-countdown-label">Time remaining until birthday unlock:</p>
+          <div class="bday-timer-grid">
+            <div class="bday-unit">
+              <span class="bday-val" id="bday-days">00</span>
+              <span class="bday-lbl">DAYS</span>
+            </div>
+            <span class="bday-sep">:</span>
+            <div class="bday-unit">
+              <span class="bday-val" id="bday-hours">00</span>
+              <span class="bday-lbl">HOURS</span>
+            </div>
+            <span class="bday-sep">:</span>
+            <div class="bday-unit">
+              <span class="bday-val" id="bday-minutes">00</span>
+              <span class="bday-lbl">MIN</span>
+            </div>
+            <span class="bday-sep">:</span>
+            <div class="bday-unit highlight-unit">
+              <span class="bday-val" id="bday-seconds">00</span>
+              <span class="bday-lbl">SEC</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="birthday-lock-hint">
+          ⏳ Automatically unlocks at midnight on September 16th! ❤️
+        </p>
+
+        <!-- Secret Preview Toggle -->
+        <div class="preview-unlock-wrap">
+          <button id="preview-bday-btn" class="subtle-link-btn" title="Secret Preview for Azaan">
+            <span>Secret Preview 🔑</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Unlocked View (Reveals on Sept 16th or Secret Preview) -->
+      <div id="birthday-unlocked-view" class="birthday-card glass-card birthday-unlocked-card hidden">
+        <div class="birthday-sparkles" aria-hidden="true">✨🎂🎉</div>
+        <h2 id="birthday-heading" class="birthday-title">Happy Birthday, My Love! ❤️</h2>
+        <div class="birthday-date-badge">September 16th 🎈</div>
+        
+        <p class="birthday-message">
+          To the girl who makes my world infinitely more beautiful, Happy Birthday! 🎉
+        </p>
+        <p class="birthday-message">
+          May your smile always stay as bright as it is today. May all your silent prayers be answered, and may you get every ounce of happiness you deserve. I just want to pause and celebrate the masterpiece that is you. 
+        </p>
+        <p class="birthday-highlight">
+          Here's to celebrating you today, tomorrow, and every single day after that. I love you! ❤️
+        </p>
+
+        <div id="relock-wrap" class="relock-wrap hidden">
+          <button id="relock-bday-btn" class="subtle-link-btn" style="margin-top:12px;" title="Re-lock countdown for preview">
+            <span>🔒 Re-lock Countdown</span>
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 5. LIVE BIRTHDAY / TIME ELAPSED TIMER -->
+    <section id="elapsed-timer-section" class="section timer-section" aria-labelledby="elapsed-heading">
+      <div class="section-header">
+        <span class="section-pill">Our Timeline</span>
+        <h2 id="elapsed-heading" class="section-title">Look how much time has passed... ❤️</h2>
+        <p class="section-subtitle">Every second has been my favorite</p>
+      </div>
+
+      <div class="timer-display-grid glass-card">
+        <!-- Days -->
+        <div class="timer-unit">
+          <div class="digit-box">
+            <span class="digit-val" id="elapsed-days">000</span>
+          </div>
+          <span class="digit-label">DAYS</span>
+        </div>
+
+        <div class="timer-separator">:</div>
+
+        <!-- Hours -->
+        <div class="timer-unit">
+          <div class="digit-box">
+            <span class="digit-val" id="elapsed-hours">00</span>
+          </div>
+          <span class="digit-label">HOURS</span>
+        </div>
+
+        <div class="timer-separator">:</div>
+
+        <!-- Minutes -->
+        <div class="timer-unit">
+          <div class="digit-box">
+            <span class="digit-val" id="elapsed-minutes">00</span>
+          </div>
+          <span class="digit-label">MINUTES</span>
+        </div>
+
+        <div class="timer-separator">:</div>
+
+        <!-- Seconds -->
+        <div class="timer-unit">
+          <div class="digit-box highlight-unit">
+            <span class="digit-val" id="elapsed-seconds">00</span>
+          </div>
+          <span class="digit-label">SECONDS</span>
+        </div>
+      </div>
+
+      <p class="timer-quote">
+        "And somehow, I still can't believe I get to call you mine. ❤️"
+      </p>
+    </section>
+
+    <!-- 6. COUNTDOWN / FUTURE MEETING TIMER -->
+    <section id="countdown-timer-section" class="section timer-section countdown-theme" aria-labelledby="countdown-heading">
+      <div class="section-header">
+        <span class="section-pill highlight-pill">Insha'Allah Soon</span>
+        <h2 id="countdown-heading" class="section-title">Until I see you again... 🥹❤️</h2>
+        <p class="section-subtitle">Holding onto every heartbeat until October</p>
+      </div>
+
+      <!-- Normal Countdown State -->
+      <div id="countdown-active-view" class="timer-display-grid glass-card countdown-card">
+        <!-- Target Days -->
+        <div class="timer-unit">
+          <div class="digit-box">
+            <span class="digit-val" id="countdown-days">00</span>
+          </div>
+          <span class="digit-label">DAYS</span>
+        </div>
+
+        <div class="timer-separator">:</div>
+
+        <!-- Target Hours -->
+        <div class="timer-unit">
+          <div class="digit-box">
+            <span class="digit-val" id="countdown-hours">00</span>
+          </div>
+          <span class="digit-label">HOURS</span>
+        </div>
+
+        <div class="timer-separator">:</div>
+
+        <!-- Target Minutes -->
+        <div class="timer-unit">
+          <div class="digit-box">
+            <span class="digit-val" id="countdown-minutes">00</span>
+          </div>
+          <span class="digit-label">MINUTES</span>
+        </div>
+
+        <div class="timer-separator">:</div>
+
+        <!-- Target Seconds -->
+        <div class="timer-unit">
+          <div class="digit-box highlight-unit">
+            <span class="digit-val" id="countdown-seconds">00</span>
+          </div>
+          <span class="digit-label">SECONDS</span>
+        </div>
+      </div>
+
+      <!-- Arrived Celebration State (Shown when countdown reaches 0) -->
+      <div id="countdown-arrived-view" class="arrived-celebration-card glass-card hidden">
+        <div class="celebrate-icon">🎉❤️🥂</div>
+        <h3 class="arrived-title">Today is the day. ❤️</h3>
+        <p class="arrived-subtitle">The wait is finally over. I get to hold your hands again.</p>
+      </div>
+    </section>
+
+    <!-- 7. QUIRKY INTERACTIVE SURPRISE -->
+    <section id="surprise-section" class="section interactive-section">
+      <div class="interactive-card glass-card" id="surprise-card">
+        <div class="card-sparkle-decor" aria-hidden="true">✨</div>
+        <h3 class="interactive-title">Wait a second...</h3>
+        <p class="interactive-desc">There's something I almost forgot to mention.</p>
+
+        <button id="surprise-btn" class="playful-action-btn" aria-expanded="false" aria-controls="surprise-reveal-box">
+          <span class="btn-text">There's something else... 👀</span>
+        </button>
+
+        <!-- Hidden Surprise Box -->
+        <div id="surprise-reveal-box" class="surprise-content hidden" role="region" aria-live="polite">
+          <div class="surprise-bubble">
+            <span class="surprise-emoji">🥰</span>
+            <p class="surprise-text">
+              "Okay, fine... I just wanted another excuse to tell you that I love you. ❤️"
+            </p>
+            <span class="surprise-tag">(You really thought it was something else, didn't you? 😉)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. SECRET MESSAGE INTERACTION -->
+    <section id="secret-section" class="section interactive-section">
+      <div class="interactive-card secret-card glass-card" id="secret-interactive-card">
+        <h3 class="interactive-title">A Little Secret Game</h3>
+        <p class="interactive-desc" id="secret-prompt-text">Tap the heart three times... ❤️</p>
+
+        <div class="secret-tap-area">
+          <button id="secret-heart-btn" class="secret-heart-button" aria-label="Tap heart to unlock secret">
+            <span class="heart-glyph" id="secret-heart-glyph">💖</span>
+            <span class="tap-counter-badge" id="secret-tap-badge">0 / 3</span>
+          </button>
+        </div>
+
+        <p class="tap-hint-text" id="secret-tap-hint">Tap 1 to begin ✨</p>
+
+        <!-- Unlocked Secret Box -->
+        <div id="secret-revealed-box" class="secret-unlocked-container hidden" role="region" aria-live="polite">
+          <div class="secret-message-bubble">
+            <div class="secret-crown">👑</div>
+            <h4 class="secret-heading">You found the secret. 🥹</h4>
+            <p class="secret-body">
+              "If you're smiling right now, mission accomplished. ❤️"
+            </p>
+            <p class="secret-sub">
+              You make my world so much softer and happier just by being in it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. FINAL EMOTIONAL SECTION -->
+    <footer id="final-section" class="section final-section">
+      <div class="final-card glass-card">
+        <p class="final-lead-in">And finally...</p>
+        <blockquote class="final-quote">
+          "No matter how many kilometers are between us,
+          you're still one of my favorite parts of every day."
+        </blockquote>
+        <p class="final-promise">
+          Until the next time I get to see you... <span class="rose-icon">🌹</span>
+        </p>
+
+        <!-- Big Beating Heart -->
+        <div class="giant-heart-wrapper" id="giant-heart-container" title="Tap me!">
+          <div class="beating-heart-visual" id="interactive-giant-heart" tabindex="0" role="button" aria-label="A big beating heart for Alma. Tap to send love!">
+            <span class="heart-symbol">❤️</span>
+            <div class="heart-pulse-glow"></div>
+          </div>
+          <span class="heart-tap-cue">Tap the heart ❤️</span>
+        </div>
+
+        <div class="creator-credits">
+          <p class="made-with-love">
+            Made with way too much love by
+          </p>
+          <p class="creator-signature name-sender">
+            Alma ka Azaan
+          </p>
+          <p class="footer-copy">© <span id="current-year">2026</span> • Our Story Continues...</p>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- 14. IMAGE LIGHTBOX MODAL                                  -->
+  <!-- ========================================================= -->
+  <div id="lightbox-modal" class="lightbox-overlay hidden" role="dialog" aria-modal="true" aria-label="Photo view">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-dialog">
+      <button id="lightbox-close-btn" class="lightbox-close" aria-label="Close photo view">✕</button>
+      <div class="lightbox-figure">
+        <img id="lightbox-image" src="" alt="Enlarged romantic memory" class="lightbox-img">
+        <p id="lightbox-caption" class="lightbox-caption-text"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
