@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Alma ❤️ | QR Code Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 20%, #2b0b30, #14041a, #09010c);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #fff;
+      padding: 24px;
+    }
+
+    .card-container {
+      position: relative;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(255, 182, 193, 0.3);
+      border-radius: 28px;
+      padding: 44px 36px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(255, 105, 180, 0.25),
+                  0 0 80px rgba(244, 63, 94, 0.15);
+    }
+
+    .heart-badge {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+      display: inline-block;
+      animation: heartbeat 2s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      14% { transform: scale(1.15); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.12); }
+      70% { transform: scale(1); }
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ffd1dc, #ff758c, #ff7eb3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-family: 'Caveat', cursive;
+      font-size: 1.45rem;
+      color: #fbcfe8;
+      margin-bottom: 26px;
+    }
+
+    .qr-frame {
+      background: #ffffff;
+      padding: 18px;
+      border-radius: 20px;
+      display: inline-block;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35),
+                  0 0 25px rgba(255, 182, 193, 0.4);
+      margin-bottom: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .qr-frame:hover {
+      transform: scale(1.02);
+    }
+
+    .qr-frame img {
+      width: 220px;
+      height: 220px;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .instructions {
+      font-size: 0.95rem;
+      color: #fda4af;
+      margin-bottom: 8px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .link-display {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.6);
+      word-break: break-all;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .link-display:hover {
+      color: #ff758c;
+      text-decoration: underline;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 22px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f43f5e, #fb7185);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(244, 63, 94, 0.6);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffe4e6;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    @media print {
+      body {
+        background: #fff !important;
+        color: #000 !important;
+        padding: 0;
+      }
+      .card-container {
+        border: 2px solid #e11d48 !important;
+        box-shadow: none !important;
+        background: #fff !important;
+        color: #000 !important;
+        margin: 0 auto;
+      }
+      h1 {
+        color: #e11d48 !important;
+        -webkit-text-fill-color: #e11d48 !important;
+      }
+      .subtitle {
+        color: #881337 !important;
+      }
+      .instructions {
+        color: #475569 !important;
+      }
+      .link-display {
+        color: #0f172a !important;
+      }
+      .actions {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-container">
+    <div class="heart-badge">❤️</div>
+    <h1>For Alma</h1>
+    <div class="subtitle">A special love note created just for you</div>
+
+    <div class="qr-frame">
+      <img src="qrcode.png" alt="QR Code to open Alma's Love Note">
+    </div>
+
+    <div class="instructions">✨ Scan with your phone camera ✨</div>
+    <a href="https://azaan786-0ss.github.io/New-Check-Note/" target="_blank" class="link-display">
+      azaan786-0ss.github.io/New-Check-Note
+    </a>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
+      <a href="qrcode.png" download="Alma_QR_Code.png" class="btn btn-secondary">💾 Download Image</a>
+    </div>
+  </div>
+
+</body>
+</html>
